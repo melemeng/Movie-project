@@ -6,14 +6,15 @@ import { useSelector } from "react-redux";
 
 const MovieDetails = () => {
 
-    const {inTheaters,popular,upcoming} = useSelector((state) => state.movie);
+    const {screen, movie} = useSelector((state) => state.detail);
 
     return(
         <div  className="card shadow">
             <div className="details">
                 <div className="stats">
                     <div className="rating">
-                    <h3 >{upcoming.title}</h3>
+                    <h3 >{movie.name}</h3>
+                    <p>Rating : {movie.rating}</p>
                     <p>{Detail.vote_average}</p>
                     </div>
                     <div className="info">
@@ -25,3 +26,5 @@ const MovieDetails = () => {
         </div>
     );
 };
+
+export default MovieDetails;
