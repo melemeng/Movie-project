@@ -15,6 +15,9 @@ html{
     &::-webkit-scrollbar-thumb{
         background-color: darkgrey;
         }
+        &::-webkit-scrollbar-track{
+            background-color: #ffffff;
+        }
     }
 
 body{
@@ -40,6 +43,9 @@ p{
 a{
     text-decoration: none;
     color: #333;
+}
+img{
+    display: block;
 }
 
 `;

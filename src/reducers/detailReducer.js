@@ -1,17 +1,29 @@
 
-const initialState = { movie : {}, screen: {}};
+const iniState = { 
+    movie : {},
+    isLoading: true,
+};
 
-const detailReducer = ( state = initialState,action) => {
+const detailReducer = ( state = iniState, action) => {
+   // console.log(action);
+
     switch(action.type){
         case "GET_DETAIL":
             return{
                 ...state,
                 movie: action.payload.movie,
-                screen: action.payload.screen
-            }
+                isLoading: false,
+               
+            };
+            case "LOADING_DETAIL":
+                return {
+                  ...state,
+                  isLoading: true,
+                };
+
             default:
-                return{...state}
+                return{...state};
+
     }
 }
-
 export default detailReducer;

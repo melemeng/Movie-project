@@ -4,15 +4,18 @@ import axios from "axios";
 import {movieDetailsURL} from '../api';
 
 export const loadDetail = (id) => async (dispatch) =>{
-    console.log(movieDetailsURL(id));
+    dispatch({
+        type: "LOADING_DETAIL",
+      });
+
     const detailData = await axios.get(movieDetailsURL(id));
-   // const screenshotData = await axios.get(movieScreeshotsURL(id));
+   //debugger
 
 
     dispatch({
         type: "GET_DETAIL",
         payload: {
-            movies: detailData.data,
+            movie: detailData.data,
            // screen: screenshotData.data
         },
     });

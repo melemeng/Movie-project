@@ -3,16 +3,24 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {loadMovies} from "../actions/movieAction.js"
 
+import MovieDetails from "../components/MovieDetails.js"
+
 // components
 
 import Movie from "../components/Movie.js";
 // styles and animations
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import {motion, AnimatePresence,LayoutGroup} from 'framer-motion';
+import { useLocation } from "react-router-dom";
 
 
 
 const Home = () =>{
+
+  // current location
+
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[2];
 
   // Fetch Movies
     const dispatch = useDispatch();
@@ -24,6 +32,12 @@ const Home = () =>{
   return (
 
       <MovieList>
+        <LayoutGroup type="crossfade">
+         <AnimatePresence>
+
+        {pathId && <MovieDetails pathId={pathId}/>}
+        </AnimatePresence>
+
         <h2>upComing Movies</h2>
           <Movies>
               {upcoming.map(movie=>(
@@ -61,7 +75,7 @@ const Home = () =>{
                   image={movie.backdrop_path}/>
               ))}
           </Movies>
-
+          </LayoutGroup>
       </MovieList>
 
   );
