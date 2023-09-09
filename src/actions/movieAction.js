@@ -1,12 +1,12 @@
 
 import axios from "axios";
 
-import {mostPopularMoviesUrl, InTheatersUrl, UpcommingMoviesUrl,searchMoviesURL} from "../api";
+import {mostPopularMoviesUrl, inTheatersUrl, upcomingMoviesUrl,searchMoviesURL} from "../api";
 
 export const loadMovies = () => async (dispatch)=>{
     const mostPopularData = await axios.get(mostPopularMoviesUrl());
-    const InTheatersData = await axios.get(InTheatersUrl());
-    const UpcomingMoviesData = await axios.get(UpcommingMoviesUrl());
+    const InTheatersData = await axios.get(inTheatersUrl());
+    const UpcomingMoviesData = await axios.get(upcomingMoviesUrl());
     dispatch({
         type: "FETCH_MOVIES",
         payload: {
