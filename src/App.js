@@ -3,6 +3,8 @@ import React from 'react';
 //
 import Home from "./pages/Home.js";
 // styles and animations
+import Nav from './components/Nav.js';
+
 
 import GlobalStyles from "./components/GlobalStyles.js";
 //import { Route } from 'react-router-dom';
@@ -16,6 +18,7 @@ function App() {
     return (
     <div className="App">
       <GlobalStyles />
+        <Nav/>
          <Routes>
            <Route path="/" element={<Home />} />
             <Route path="/movie/:id" element={<Home />} />

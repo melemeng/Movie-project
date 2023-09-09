@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-import {mostPopularMoviesUrl, InTheatersUrl, UpcommingMoviesUrl} from "../api";
+import {mostPopularMoviesUrl, InTheatersUrl, UpcommingMoviesUrl,searchMoviesURL} from "../api";
 
 export const loadMovies = () => async (dispatch)=>{
     const mostPopularData = await axios.get(mostPopularMoviesUrl());
@@ -15,4 +15,15 @@ export const loadMovies = () => async (dispatch)=>{
             upcoming: UpcomingMoviesData.data.results,
         },
     })
-}
+};
+
+export const fetchSearch = (movie_name) => async (dispatch) => {
+    const searchMovies = await axios.get(searchMoviesURL(movie_name));
+    console.log(searchMovies.data.results);
+    dispatch({
+      type: "FETCH_SEARCHED",
+      payload: {
+        searched: searchMovies.data.results,
+      },
+    });
+  };

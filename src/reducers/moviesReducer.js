@@ -3,7 +3,7 @@ const iniState = {
     popular: [],
     inTheaters: [],
     upcoming: [],
-    search: []
+    searched: []
 }
 
 const movieReducer = (state = iniState, action) => {
@@ -16,6 +16,16 @@ const movieReducer = (state = iniState, action) => {
                 upcoming: action.payload.upcoming,
 
             };
+            case "FETCH_SEARCHED":
+                return {
+                  ...state,
+                  searched: action.payload.searched,
+                };
+            case "CLEAR_SEARCHED":
+                return {
+                      ...state,
+                      searched: [],
+                    };
             
         default:
             return {...state};
