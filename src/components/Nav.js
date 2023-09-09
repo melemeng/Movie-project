@@ -1,15 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { fadeIn } from "../animations";
 import { fetchSearch } from "../actions/movieAction";
 import { useDispatch } from "react-redux";
 
-
-
-
-const Nav = () =>{
-
+const Nav = () => {
   const dispatch = useDispatch();
   const [textInput, setTextInput] = useState("");
 
@@ -25,21 +21,20 @@ const Nav = () =>{
   const clearSearched = () => {
     dispatch({ type: "CLEAR_SEARCHED" });
   };
-    return(
-        <StyledNav variants={fadeIn} initial="hidden" animate="show">
-        <Logo onClick={clearSearched}>
-          <h1>Movies</h1>
-        </Logo>
-        <form className="search">
-          <input value={textInput} onChange={inputHandler} type="text" />
-          <button onClick={submitSearch} type="submit">
-            Search
-          </button>
-        </form>
-      </StyledNav>
-
-    );
-}
+  return (
+    <StyledNav variants={fadeIn} initial="hidden" animate="show">
+      <Logo onClick={clearSearched}>
+        <h1>Movies</h1>
+      </Logo>
+      <form className="search">
+        <input value={textInput} onChange={inputHandler} type="text" />
+        <button onClick={submitSearch} type="submit">
+          Search
+        </button>
+      </form>
+    </StyledNav>
+  );
+};
 
 const StyledNav = styled(motion.nav)`
   padding: 3rem 5rem;
