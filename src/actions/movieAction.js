@@ -7,6 +7,8 @@ export const loadMovies = () => async (dispatch)=>{
     const mostPopularData = await axios.get(mostPopularMoviesUrl());
     const InTheatersData = await axios.get(inTheatersUrl());
     const UpcomingMoviesData = await axios.get(upcomingMoviesUrl());
+
+    
     dispatch({
         type: "FETCH_MOVIES",
         payload: {

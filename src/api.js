@@ -1,6 +1,6 @@
 
 // Use environment variable or config file to store API key
-const apiKey = process.env.MOVIE_DB_API_KEY;  
+const apiKey = process.env.MOVIE_DB_API_KEY ;  
 
 const baseUrl = 'https://api.themoviedb.org/3/movie/';
 const searchUrlBase = 'https://api.themoviedb.org/3/search/movie';

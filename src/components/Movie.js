@@ -1,40 +1,46 @@
-import React from 'react'
+import React from "react";
 
-    // style and animations
+// style and animations
 
-import styles from 'styled-components';
-import {motion} from 'framer-motion';
-// redux import 
+import styles from "styled-components";
+import { motion } from "framer-motion";
+// redux import
 
-import { useDispatch } from 'react-redux';
-import {loadDetail} from '../actions/detailAction';
+import { useDispatch } from "react-redux";
+import { loadDetail } from "../actions/detailAction";
 
-import { Link  } from 'react-router-dom';  
+import { Link } from "react-router-dom";
+import { popup } from "../animations";
 
+const Movies = ({ name, released, image, id }) => {
+  const StringPath = id.toString();
 
+  const dispatch = useDispatch();
+  const loadDetailhandler = () => {
+    document.body.style.overflow = "hidden";
 
-const Movies = ({name,released,image, id}) => {
+    dispatch(loadDetail(id));
+  };
 
-    const StringPath = id.toString();
-
-    const dispatch = useDispatch();
-    const loadDetailhandler = () =>{
-        document.body.style.overflow = "hidden";
-
-        dispatch(loadDetail(id))
-    }
-
-    return (
-        <StyledMovie layoutId={StringPath} onClick={loadDetailhandler}>
-            <Link to={`/movie/${id}`}>
-            <motion.h3 layoutId={`title ${StringPath}`}>{name}</motion.h3>
-            <p>{released}</p>
-            <motion.img layoutId={`image ${StringPath}`} src={`https://image.tmdb.org/t/p/original${image}`} alt={name}/>
-            </Link>
-        </StyledMovie>
-
-
-    );
+  return (
+    <StyledMovie
+      variants={popup}
+      initial="hidden"
+      animate="show"
+      layoutId={StringPath}
+      onClick={loadDetailhandler}
+    >
+      <Link to={`/movie/${id}`}>
+        <motion.h3 layoutId={`title ${StringPath}`}>{name}</motion.h3>
+        <p>{released}</p>
+        <motion.img
+          layoutId={`image ${StringPath}`}
+          src={`https://image.tmdb.org/t/p/original${image}`}
+          alt={name}
+        />
+      </Link>
+    </StyledMovie>
+  );
 };
 
 const StyledMovie = styles(motion.div)`
