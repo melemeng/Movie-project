@@ -43,7 +43,7 @@ const SearDetails = `&api_key=${api_key}`
 */
 
 // Use environment variable or config file to store API key
-const apiKey = process.env.MOVIE_DB_API_KEY || '093d7f98793dfd70a79d3385cdf985be';  // NOTE: Defaulting to hardcoded key for this example, but in a real-world scenario, avoid this!
+const apiKey = process.env.MOVIE_DB_API_KEY;  // NOTE: Defaulting to hardcoded key for this example, but in a real-world scenario, avoid this!
 
 const baseUrl = 'https://api.themoviedb.org/3/movie/';
 const searchUrlBase = 'https://api.themoviedb.org/3/search/movie';
